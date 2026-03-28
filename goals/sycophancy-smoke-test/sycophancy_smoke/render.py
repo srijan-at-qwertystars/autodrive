@@ -16,11 +16,16 @@ def render_comparison(
     right: TranscriptReport,
     output_format: str,
 ) -> str:
+    signal_deltas = {
+        kind: round(right.signal_averages[kind] - left.signal_averages[kind], 3)
+        for kind in left.signal_averages
+    }
     comparison = {
         "left": left.to_dict(),
         "right": right.to_dict(),
         "delta": round(right.overall_score - left.overall_score, 3),
-        "higher_score_path": (
+        "signal_deltas": signal_deltas,
+        "higher_overall_score_path": (
             right.path if right.overall_score > left.overall_score else left.path
         ),
     }
@@ -32,14 +37,15 @@ def render_comparison(
         f"  {left.path}: overall={left.overall_score:.3f}",
         f"  {right.path}: overall={right.overall_score:.3f}",
         f"  delta(right-left)={comparison['delta']:.3f}",
-        f"  higher score: {comparison['higher_score_path']}",
+        f"  higher score: {comparison['higher_overall_score_path']}",
         "",
         "Signal averages:",
     ]
     for kind in left.signal_averages:
         lines.append(
             "  "
-            f"{kind}: {left.signal_averages[kind]:.3f} -> {right.signal_averages[kind]:.3f}"
+            f"{kind}: {left.signal_averages[kind]:.3f} -> {right.signal_averages[kind]:.3f} "
+            f"(delta={signal_deltas[kind]:.3f})"
         )
     return "\n".join(lines)
 
