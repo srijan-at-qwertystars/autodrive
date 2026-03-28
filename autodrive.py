@@ -54,6 +54,24 @@ def parse_spec(goal_dir: Path) -> dict | None:
     return data
 
 
+def parse_done_metadata(goal_dir: Path) -> dict:
+    done_path = goal_dir / "DONE.md"
+    metadata = {
+        "completion_timestamp": "-",
+        "standalone_repo": "",
+    }
+    if not done_path.exists():
+        return metadata
+
+    for line in done_path.read_text().splitlines():
+        if line.startswith("Completion timestamp:"):
+            metadata["completion_timestamp"] = line.split(":", 1)[1].strip()
+        elif line.startswith("Standalone repo:"):
+            metadata["standalone_repo"] = line.split(":", 1)[1].strip()
+
+    return metadata
+
+
 def render_table(headers: list[str], rows: list[list[str]]) -> list[str]:
     lines = [
         "| " + " | ".join(headers) + " |",
@@ -119,17 +137,13 @@ def render_readme() -> None:
     if completed:
         rows = []
         for g in completed:
-            done_path = GOALS_DIR / g["name"] / "DONE.md"
-            completed_at = "-"
-            if done_path.exists():
-                for line in done_path.read_text().splitlines():
-                    if line.startswith("Completion timestamp:"):
-                        completed_at = line.split(":", 1)[1].strip()
-                        break
-            rows.append([f"`{g['name']}`", g["one_liner"], completed_at])
-        lines.extend(render_table(["Goal", "One-liner", "Completed"], rows))
+            done_metadata = parse_done_metadata(GOALS_DIR / g["name"])
+            repo_url = done_metadata["standalone_repo"]
+            repo_cell = f"[repo]({repo_url})" if repo_url else "-"
+            rows.append([f"`{g['name']}`", g["one_liner"], done_metadata["completion_timestamp"], repo_cell])
+        lines.extend(render_table(["Goal", "One-liner", "Completed", "Repo"], rows))
     else:
-        lines.extend(render_table(["Goal", "One-liner", "Completed"], [["_None yet_", "-", "-"]]))
+        lines.extend(render_table(["Goal", "One-liner", "Completed", "Repo"], [["_None yet_", "-", "-", "-"]]))
 
     lines.extend(["", "## Abandoned Goals", ""])
     if abandoned:

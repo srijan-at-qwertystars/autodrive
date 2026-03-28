@@ -1,6 +1,11 @@
 #!/bin/sh
-# Remove any Copilot co-authored-by lines
-sed -i '/Co-authored-by: Copilot/d' "$1"
+set -eu
 
-# Add project contributors as co-authors
+# Normalize co-author trailers so repeated commits or amends stay clean.
+sed -i \
+  -e '/Co-authored-by: Copilot/d' \
+  -e '/Co-authored-by: qwertystars </d' \
+  -e '/Co-authored-by: srijan-at-qwertystars </d' \
+  "$1"
+
 printf "\nCo-authored-by: qwertystars <62981066+qwertystars@users.noreply.github.com>\nCo-authored-by: srijan-at-qwertystars <263055350+srijan-at-qwertystars@users.noreply.github.com>\n" >> "$1"
