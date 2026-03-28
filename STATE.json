@@ -1,9 +1,8 @@
 {
-  "current_phase": "DISCOVER",
-  "current_goal": null,
-  "cycle_count": 0,
+  "current_phase": "SPEC",
+  "current_goal": "readme-reality-check",
+  "cycle_count": 1,
   "goals_completed": 0,
   "goals_abandoned": 0,
   "last_retrospective_at": 0
 }
-

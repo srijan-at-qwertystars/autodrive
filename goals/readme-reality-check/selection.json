@@ -1,0 +1,17 @@
+{
+  "name": "readme-reality-check",
+  "one_liner": "A CLI that compares a repo's setup docs against its actual scripts, files, and runnable commands to catch stale onboarding instructions.",
+  "deliverables": [
+    "single binary/CLI",
+    "README/setup audit engine",
+    "rules for package.json/Makefile/docker/devcontainer detection",
+    "machine-readable JSON report",
+    "sample HTML report on real repos"
+  ],
+  "novelty": 7,
+  "feasibility": 9,
+  "usefulness": 9,
+  "effort": 9,
+  "reasoning": "GitHub issues and HN both point to onboarding and documentation drift as a persistent pain point, while agent-heavy repos make setup even harder. A lightweight local auditor is broadly useful, keyless, and very buildable in one session.",
+  "total_score": 34
+}

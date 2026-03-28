@@ -1,0 +1,144 @@
+[
+  {
+    "timestamp": "2026-03-28T20:26:22+00:00",
+    "candidates": [
+      {
+        "name": "readme-reality-check",
+        "one_liner": "A CLI that compares a repo's setup docs against its actual scripts, files, and runnable commands to catch stale onboarding instructions.",
+        "deliverables": [
+          "single binary/CLI",
+          "README/setup audit engine",
+          "rules for package.json/Makefile/docker/devcontainer detection",
+          "machine-readable JSON report",
+          "sample HTML report on real repos"
+        ],
+        "novelty": 7,
+        "feasibility": 9,
+        "usefulness": 9,
+        "effort": 9,
+        "reasoning": "GitHub issues and HN both point to onboarding and documentation drift as a persistent pain point, while agent-heavy repos make setup even harder. A lightweight local auditor is broadly useful, keyless, and very buildable in one session.",
+        "total_score": 34
+      },
+      {
+        "name": "agent-run-atlas",
+        "one_liner": "A local inspector that turns agent logs, shell transcripts, and file edits into a timeline of what an AI coding agent actually did.",
+        "deliverables": [
+          "CLI log ingester",
+          "timeline JSON schema",
+          "HTML visualization of commands/files/context phases",
+          "heuristics for loop/stall detection",
+          "demo using synthetic or local run logs"
+        ],
+        "novelty": 8,
+        "feasibility": 7,
+        "usefulness": 8,
+        "effort": 7,
+        "reasoning": "Trending repos are full of agent frameworks, memory systems, and 'subconscious' layers, but the missing piece is transparent local observability. HN interest in agent folder anatomy and workflow visibility suggests strong demand for an explain-what-happened tool.",
+        "total_score": 30
+      },
+      {
+        "name": "package-feed-watchdog",
+        "one_liner": "A cross-registry scanner that flags suspicious newly published npm, PyPI, and crates packages using metadata and naming heuristics.",
+        "deliverables": [
+          "feed fetcher for PyPI/npm/crates sources",
+          "risk scoring library",
+          "CLI with table and JSON output",
+          "daily snapshot dataset",
+          "sample report highlighting typosquats and odd descriptions"
+        ],
+        "novelty": 8,
+        "feasibility": 8,
+        "usefulness": 8,
+        "effort": 8,
+        "reasoning": "Recent package feeds are noisy and sometimes openly sketchy, which is a strong signal for a lightweight safety analysis tool. It is self-contained, does not need API keys, and can produce both a useful CLI and an interesting public dataset.",
+        "total_score": 32
+      },
+      {
+        "name": "issue-pain-radar",
+        "one_liner": "A data product that mines 'good first issue' and 'help wanted' labels to reveal the recurring boring tasks maintainers still lack tools for.",
+        "deliverables": [
+          "issue collection script",
+          "task taxonomy classifier",
+          "ranked CSV/JSON dataset",
+          "small static dashboard",
+          "top missing-tool opportunities report by ecosystem"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 7,
+        "effort": 8,
+        "reasoning": "Those labels are a goldmine for unmet needs: stale docs, flaky tests, environment setup, repetitive migrations, and tedious content updates. Instead of contributing to the issues, this turns them into a map of what products should exist but mostly do not.",
+        "total_score": 30
+      },
+      {
+        "name": "arxiv-weekend-prototypes",
+        "one_liner": "A pipeline that converts recent arXiv papers in AI, software engineering, PL, crypto, and data structures into ranked one-session prototype ideas.",
+        "deliverables": [
+          "arXiv scraper for selected categories",
+          "paper-to-prototype ranking logic",
+          "JSON dataset of candidate builds",
+          "static HTML explorer",
+          "exportable prompt cards for each idea"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 7,
+        "effort": 8,
+        "reasoning": "There is plenty of research discovery tooling, but much less that filters for 'what can one person actually build tonight.' That gap matters because recent arXiv output is rich, yet most builders need a practical bridge from paper themes to feasible code artifacts.",
+        "total_score": 30
+      },
+      {
+        "name": "spec-delta-browser",
+        "one_liner": "A CLI and mini web app that turns long-form specs, policies, or laws into semantic diffs, section histories, and blame-like change views.",
+        "deliverables": [
+          "document chunker",
+          "semantic diff engine",
+          "CLI for import and compare",
+          "static browser UI",
+          "example dataset using a public spec or law repo"
+        ],
+        "novelty": 8,
+        "feasibility": 7,
+        "usefulness": 7,
+        "effort": 7,
+        "reasoning": "HN traction around legislation-as-git shows people love versioned text, but generic tooling for deep spec diffs is still weak. A focused local tool for section-aware change browsing feels fresh enough and can be useful for standards, RFCs, policies, and docs.",
+        "total_score": 29
+      },
+      {
+        "name": "terminal-storyboard",
+        "one_liner": "A tool that converts raw terminal sessions into compact visual storyboards with command grouping, file impact summaries, and replayable checkpoints.",
+        "deliverables": [
+          "session parser",
+          "command clustering heuristics",
+          "ANSI-to-summary renderer",
+          "HTML or SVG storyboard output",
+          "CLI for converting shell transcripts into artifacts"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 8,
+        "effort": 8,
+        "reasoning": "HN interest in git diffs, shell workflows, and agent traces suggests a gap between raw logs and useful narratives. Existing terminal replay tools focus on playback, while a storyboard view would emphasize comprehension, debugging, and sharing how work actually unfolded.",
+        "total_score": 31
+      },
+      {
+        "name": "trend-crosswalk",
+        "one_liner": "A local trend synthesizer that cross-references GitHub Trending, HN, arXiv, and package feeds to find crowded themes and overlooked buildable gaps.",
+        "deliverables": [
+          "multi-source scraper",
+          "theme clustering module",
+          "crowded-vs-empty scoring model",
+          "JSON snapshot format",
+          "ranked idea board with export"
+        ],
+        "novelty": 8,
+        "feasibility": 8,
+        "usefulness": 7,
+        "effort": 8,
+        "reasoning": "The strongest meta-pattern across the sources is crowding around agents, memory, and wrappers, while gaps appear in observability, trust, onboarding, and translation from research to practice. A crosswalk tool would itself be useful to indie builders who want signals, not noise.",
+        "total_score": 31
+      }
+    ],
+    "selected_goal": "readme-reality-check"
+  }
+]
