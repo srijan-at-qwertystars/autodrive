@@ -1,0 +1,16 @@
+{
+  "name": "sycophancy-smoke-test",
+  "one_liner": "CLI and library that scores chat transcripts for over-agreement, missing pushback, and confidence-without-evidence patterns.",
+  "deliverables": [
+    "simple transcript format and parser",
+    "heuristic scoring engine for affirmation bias and weak disagreement",
+    "CLI report with per-turn flags and summary scores",
+    "fixture set of good and bad sample conversations"
+  ],
+  "novelty": 8,
+  "feasibility": 9,
+  "usefulness": 8,
+  "effort": 5,
+  "reasoning": "HN and recent research are full of concern about sycophantic AI, but there is room for a lightweight local evaluator that teams can run on transcripts without any model API.",
+  "total_score": 30
+}

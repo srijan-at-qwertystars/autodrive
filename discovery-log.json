@@ -140,5 +140,140 @@
       }
     ],
     "selected_goal": "readme-reality-check"
+  },
+  {
+    "timestamp": "2026-03-28T20:40:42+00:00",
+    "candidates": [
+      {
+        "name": "package-surge-radar",
+        "one_liner": "Cross-ecosystem trend analyzer that clusters rising npm, PyPI, and crates.io packages into tool categories and highlights whitespace opportunities.",
+        "deliverables": [
+          "collector for npm, PyPI, and crates.io trend/recent-package pages",
+          "taxonomy and scoring pipeline for grouping packages by use case",
+          "generated JSON snapshot of rising packages and categories",
+          "terminal or static HTML report with 'overcrowded vs underbuilt' insights"
+        ],
+        "novelty": 8,
+        "feasibility": 8,
+        "usefulness": 8,
+        "effort": 6,
+        "reasoning": "Trend pages are noisy and ecosystem-specific; a compact tool that turns package motion into actionable market maps would be useful for builders looking for neglected local-tool categories.",
+        "total_score": 30
+      },
+      {
+        "name": "issue-gap-atlas",
+        "one_liner": "Data product that mines public 'good first issue' and 'help wanted' tickets to surface repeated missing-tool problems across open source.",
+        "deliverables": [
+          "GitHub issue search collector for selected popular repos",
+          "theme extraction and deduplication pipeline",
+          "ranked dataset of recurring pain points",
+          "report showing which rough edges look like standalone product opportunities"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 9,
+        "effort": 6,
+        "reasoning": "Instead of finding tasks to contribute to, this reframes issue backlogs as demand signals for new products, which is a strong way to discover practical tools with built-in user pain.",
+        "total_score": 30
+      },
+      {
+        "name": "sycophancy-smoke-test",
+        "one_liner": "CLI and library that scores chat transcripts for over-agreement, missing pushback, and confidence-without-evidence patterns.",
+        "deliverables": [
+          "simple transcript format and parser",
+          "heuristic scoring engine for affirmation bias and weak disagreement",
+          "CLI report with per-turn flags and summary scores",
+          "fixture set of good and bad sample conversations"
+        ],
+        "novelty": 8,
+        "feasibility": 9,
+        "usefulness": 8,
+        "effort": 5,
+        "reasoning": "HN and recent research are full of concern about sycophantic AI, but there is room for a lightweight local evaluator that teams can run on transcripts without any model API.",
+        "total_score": 30
+      },
+      {
+        "name": "trace-to-tale",
+        "one_liner": "CLI that turns strace-style logs into readable narratives of what a program opened, executed, waited on, and failed to find.",
+        "deliverables": [
+          "parser for common strace output patterns",
+          "event summarizer that groups syscalls into higher-level actions",
+          "ANSI timeline or sequence-style terminal view",
+          "sample traces and regression tests"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 8,
+        "effort": 5,
+        "reasoning": "There is clear appetite for better low-level tooling and better diffs/explanations; converting raw syscall noise into a human story would make systems debugging much more approachable.",
+        "total_score": 28
+      },
+      {
+        "name": "schema-fuzz-studio",
+        "one_liner": "Local test generator that produces adversarial JSON payloads from JSON Schema, Pydantic, or Zod-like definitions.",
+        "deliverables": [
+          "schema loader for a practical subset of common schema formats",
+          "generator for valid, boundary, and malicious-ish invalid cases",
+          "CLI that exports fixtures as JSON files or NDJSON",
+          "mini report explaining why each case is interesting"
+        ],
+        "novelty": 7,
+        "feasibility": 8,
+        "usefulness": 9,
+        "effort": 6,
+        "reasoning": "Parser, validation, and type-safety tooling are trending everywhere, and a local-first fuzz generator would be immediately useful to app and library authors without needing cloud services.",
+        "total_score": 30
+      },
+      {
+        "name": "graph-evac-lab",
+        "one_liner": "Interactive CLI playground for evacuation and routing on time-decaying graphs with sample generators and ASCII visualizations.",
+        "deliverables": [
+          "graph and schedule instance generator",
+          "baseline solver heuristics for evacuation and rerouting",
+          "ASCII visualizer for graph state over time",
+          "benchmark scenarios and result summaries"
+        ],
+        "novelty": 9,
+        "feasibility": 6,
+        "usefulness": 7,
+        "effort": 7,
+        "reasoning": "Recent arXiv work in cs.DS suggests interesting dynamic-routing primitives, and packaging them as a small playable simulator would make advanced algorithms tangible and reusable.",
+        "total_score": 29
+      },
+      {
+        "name": "paper-primitive-index",
+        "one_liner": "Research digestion tool that converts recent arXiv papers into a searchable catalog of implementable primitives, datasets, and toy-project ideas.",
+        "deliverables": [
+          "arXiv collector for selected categories",
+          "extractor for titles, abstracts, and inferred primitive types",
+          "generated JSON index of papers mapped to buildable concepts",
+          "searchable local report for browsing by technique or product angle"
+        ],
+        "novelty": 8,
+        "feasibility": 8,
+        "usefulness": 7,
+        "effort": 5,
+        "reasoning": "Most paper digests stop at summarization; a tool that translates research into concrete hackable building blocks would be valuable for fast prototyping and idea generation.",
+        "total_score": 28
+      },
+      {
+        "name": "proof-puzzlebox",
+        "one_liner": "Terminal tutor that turns small logic and type-theory proof tasks into puzzle-style exercises with step checking.",
+        "deliverables": [
+          "parser for a tiny propositional logic or lambda-calculus language",
+          "puzzle generator with escalating difficulty",
+          "interactive terminal solver and hint system",
+          "starter lesson pack and tests"
+        ],
+        "novelty": 8,
+        "feasibility": 7,
+        "usefulness": 7,
+        "effort": 6,
+        "reasoning": "Proof assistants and programming-language topics are resurfacing in mainstream discussion, and a compact puzzle-oriented teaching tool would make those ideas accessible without heavy formal tooling.",
+        "total_score": 28
+      }
+    ],
+    "selected_goal": "sycophancy-smoke-test",
+    "selection_note": "Top-score tie resolved in favor of the more local-first and lower-risk implementation."
   }
 ]
