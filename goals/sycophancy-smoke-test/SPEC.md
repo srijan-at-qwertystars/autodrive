@@ -4,14 +4,14 @@
 **Started**: 2026-03-28T20:22:16Z
 **Max cycles**: 3
 **Cycle**: 1 of 3
-**Status**: IN_PROGRESS
+**Status**: COMPLETE
 
 ## Deliverables
-- [ ] A Python CLI and library for parsing transcript files and scoring sycophancy-related signals
-- [ ] Heuristics for affirmation bias, weak disagreement, unsupported certainty, and lack of evidence-seeking behavior
-- [ ] A machine-readable JSON report plus a readable terminal summary
-- [ ] Good and bad conversation fixtures that demonstrate materially different scores
-- [ ] An automated test suite and local README with usage examples
+- [x] A Python CLI and library for parsing transcript files and scoring sycophancy-related signals
+- [x] Heuristics for affirmation bias, weak disagreement, unsupported certainty, and lack of evidence-seeking behavior
+- [x] A machine-readable JSON report plus a readable terminal summary
+- [x] Good and bad conversation fixtures that demonstrate materially different scores
+- [x] An automated test suite and local README with usage examples
 
 ## Success Criteria (machine-verifiable)
 - `python3 sycophancy_smoke_test.py --help` exits successfully inside this goal directory
