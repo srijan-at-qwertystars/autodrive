@@ -1,0 +1,5 @@
+__pycache__/
+readme_reality_check_lib/__pycache__/
+tests/__pycache__/
+out/*.html
+out/test-artifacts/

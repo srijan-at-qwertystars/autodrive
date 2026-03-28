@@ -1,11 +1,11 @@
 from __future__ import annotations
 
 import argparse
-import json
 import sys
 from pathlib import Path
 
 from .auditor import audit_repository
+from .renderers import render_report
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -19,7 +19,7 @@ def build_parser() -> argparse.ArgumentParser:
     audit_parser.add_argument("path", nargs="?", default=".", help="Path to the repository to audit.")
     audit_parser.add_argument(
         "--format",
-        choices=("json", "text"),
+        choices=("json", "text", "html"),
         default="text",
         help="Output format.",
     )
@@ -44,34 +44,14 @@ def main(argv: list[str] | None = None) -> int:
         parser.error(f"path does not exist: {target}")
 
     report = audit_repository(target)
-    rendered = _render_report(report, args.format)
+    rendered = render_report(report, args.format)
 
     if args.output:
         output_path = Path(args.output)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(rendered + ("\n" if not rendered.endswith("\n") else ""), encoding="utf-8")
     else:
         sys.stdout.write(rendered)
         if not rendered.endswith("\n"):
             sys.stdout.write("\n")
     return 0
-
-
-def _render_report(report, output_format: str) -> str:
-    if output_format == "json":
-        return json.dumps(report.to_dict(), indent=2, sort_keys=True)
-
-    lines = [
-        f"Target: {report.target}",
-        f"Docs scanned: {len(report.facts.doc_files)}",
-        f"Instructions parsed: {len(report.instructions)}",
-        f"Findings: {len(report.findings)}",
-    ]
-    for finding in report.findings:
-        location = ""
-        if finding.source_path:
-            location = finding.source_path
-            if finding.line:
-                location = f"{location}:{finding.line}"
-            location = f" [{location}]"
-        lines.append(f"- {finding.severity.upper()} {finding.kind}{location}: {finding.message}")
-    return "\n".join(lines)
